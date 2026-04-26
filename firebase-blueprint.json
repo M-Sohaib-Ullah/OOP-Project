@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with gamification stats",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "xp": { "type": "number" },
+        "streak": { "type": "number" },
+        "lastStudyDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "xp", "streak"]
+    },
+    "ExamResult": {
+      "title": "Exam Result",
+      "description": "Result of an exam evaluated by AI",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "subject": { "type": "string" },
+        "score": { "type": "number" },
+        "totalScore": { "type": "number" },
+        "feedback": { "type": "string" },
+        "dateTaken": { "type": "string" }
+      },
+      "required": ["userId", "subject", "score", "totalScore"]
+    },
+    "Flashcard": {
+      "title": "Flashcard",
+      "description": "AI generated flashcard for a topic",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "topic": { "type": "string" },
+        "question": { "type": "string" },
+        "answer": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "topic", "question", "answer"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Store user profiles"
+    },
+    "/examResults/{resultId}": {
+      "schema": "ExamResult",
+      "description": "Store exam results"
+    },
+    "/flashcards/{flashcardId}": {
+      "schema": "Flashcard",
+      "description": "Store flashcards"
+    }
+  }
+}
